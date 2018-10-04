@@ -2,14 +2,15 @@
 
 namespace app\models;
 
-use Yii;
+use yii\base\Model;
 
 /**
- * This is the model class for table "product".
+ * This is the model class for table product
  *
  * @property int $id
+ * @property int $price
  * @property string $name
- * @property string $price
+ * @property string $category
  * @property int $created_at
  */
 class Product extends \yii\db\ActiveRecord
@@ -17,6 +18,7 @@ class Product extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
     public static function tableName()
     {
         return 'product';
@@ -25,24 +27,26 @@ class Product extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+
     public function rules()
     {
         return [
-            [['name', 'price', 'created_at'], 'required'],
-            [['created_at'], 'integer'],
-            [['name', 'price'], 'string', 'max' => 50],
+            [['price', 'created_at'], 'integer'],
+            [['name', 'category'], 'string', 'max' => 50],
         ];
     }
 
     /**
      * {@inheritdoc}
      */
+
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
             'price' => 'Price',
+            'name' => ' Name',
+            'category' => 'Category',
             'created_at' => 'Created At',
         ];
     }
